@@ -1,8 +1,8 @@
-var refinoInicial = 12;
-var refinoFinal = 15;
+var refinoInicial = 13;
+var refinoFinal = 14;
 var refinoAtual = refinoInicial;
 var bsb = 0;
-var tentativas = 120000;
+var tentativas = 1000;
 var bsbTentativas = [];
 var media;
 var mediana;
@@ -85,10 +85,32 @@ function medianaArray(valores){
     return valores[Math.floor(valores.length/2)];
 }
 
-function modaArray(valores){
-    var repeticoes = new Array(valores.length).fill(0)
+/*function modaArray(valores){
+    const repeticoes = new Map();
+
     for(i in valores){
-        repeticoes[valores[i]]++;
+        if(repeticoes.has(valores[i])){
+            repeticoes.set(valores[i], repeticoes.get(valores[i]++))
+        } else{
+            repeticoes.set(valores[i], 1);
+        }
     }
-    return repeticoes.indexOf(Math.max(...repeticoes))
+
+
+}*/
+
+function modaArray(valores){
+    var repeticoes = {}
+    var maximo = 0;
+    var resultado;
+
+    valores.forEach(valor => {
+        repeticoes[valor] = (repeticoes[valor] || 0) + 1;
+        if(repeticoes[valor] > maximo){
+            maximo = repeticoes[valor];
+            resultado = valor;
+            return;
+        }
+    });
+    return resultado;
 }
