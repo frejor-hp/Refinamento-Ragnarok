@@ -85,20 +85,6 @@ function medianaArray(valores){
     return valores[Math.floor(valores.length/2)];
 }
 
-/*function modaArray(valores){
-    const repeticoes = new Map();
-
-    for(i in valores){
-        if(repeticoes.has(valores[i])){
-            repeticoes.set(valores[i], repeticoes.get(valores[i]++))
-        } else{
-            repeticoes.set(valores[i], 1);
-        }
-    }
-
-
-}*/
-
 function modaArray(valores){
     var repeticoes = {}
     var maximo = 0;
